@@ -67,4 +67,5 @@ const mapDispatchToProps = (dispatch: any, props: any) => ({
     actions: bindActionCreators(calculatorActions, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CalculatorContainer);
+// tslint:disable-next-line
+export const Calculator = connect(mapStateToProps, mapDispatchToProps)(CalculatorContainer);

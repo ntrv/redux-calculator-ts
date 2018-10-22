@@ -4,11 +4,11 @@ import { Provider } from 'react-redux';
 
 import store from './store';
 
-import CalculatorContainer from './containers/calculator';
+import { Calculator } from './containers/calculator';
 
 ReactDOM.render(
   <Provider store={store}>
-    <CalculatorContainer />
+    <Calculator />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
