@@ -5,8 +5,8 @@ interface PlusButtonProps {
     onClick: () => void,
 }
 
-const PlusButton: React.SFC<PlusButtonProps> = ({onClick}) => (
+const plusButton: React.SFC<PlusButtonProps> = ({onClick}) => (
     <Button variant="outlined" color="primary" onClick={onClick}>+</Button>
 );
 
-export default PlusButton;
+export default plusButton;

@@ -6,8 +6,8 @@ interface NumButtonProps {
     onClick: (n: number) => void,
 }
 
-const NumButton: React.SFC<NumButtonProps> = ({n, onClick}) => (
+const numButton: React.SFC<NumButtonProps> = ({n, onClick}) => (
     <Button variant="outlined" onClick={() => onClick(n)}>{n}</Button>
 );
 
-export default NumButton;
+export default numButton;

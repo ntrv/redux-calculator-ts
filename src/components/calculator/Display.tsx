@@ -5,7 +5,7 @@ interface DisplayProps {
     value: number,
 }
 
-const Display: React.SFC<DisplayProps> = ({ value }) => (
+const display: React.SFC<DisplayProps> = ({ value }) => (
     <div>
         <TextField
             id="standard-read-only-input"
@@ -20,4 +20,4 @@ const Display: React.SFC<DisplayProps> = ({ value }) => (
     </div>
 );
 
-export default Display;
+export default display;

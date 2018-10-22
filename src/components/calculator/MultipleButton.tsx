@@ -5,8 +5,8 @@ interface MultipleButtonProps {
     onClick: () => void,
 }
 
-const MultipleButton: React.SFC<MultipleButtonProps> = ({onClick}) => (
+const multipleButton: React.SFC<MultipleButtonProps> = ({onClick}) => (
     <Button variant="outlined" color="primary" onClick={onClick}>×</Button>
 );
 
-export default MultipleButton;
+export default multipleButton;

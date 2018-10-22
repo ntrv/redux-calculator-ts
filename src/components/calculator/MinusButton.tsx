@@ -5,8 +5,8 @@ interface MinusButtonProps {
     onClick: () => void,
 }
 
-const MinusButton: React.SFC<MinusButtonProps> = ({onClick}) => (
+const minusButton: React.SFC<MinusButtonProps> = ({onClick}) => (
     <Button variant="outlined" color="secondary" onClick={onClick}>-</Button>
 );
 
-export default MinusButton;
+export default minusButton;

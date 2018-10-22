@@ -5,8 +5,8 @@ interface ClearAllButtonProps {
     onClick: () => void,
 }
 
-const ClearAllButton: React.SFC<ClearAllButtonProps> = ({onClick}) => (
+const clearAllButton: React.SFC<ClearAllButtonProps> = ({onClick}) => (
     <Button variant="outlined" onClick={onClick}>AC</Button>
 );
 
-export default ClearAllButton;
+export default clearAllButton;
