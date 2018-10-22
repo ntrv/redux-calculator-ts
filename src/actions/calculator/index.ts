@@ -1,4 +1,4 @@
-import actionCreatorFactory from 'typescript-fsa';
+import { actionCreatorFactory } from 'typescript-fsa';
 import * as types from './types';
 
 const actionCreator = actionCreatorFactory();

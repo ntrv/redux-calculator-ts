@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import store from './store';
 
-import CalculatorContainer from './containers/calculator'
+import CalculatorContainer from './containers/calculator';
 
 ReactDOM.render(
   <Provider store={store}>
