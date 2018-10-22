@@ -73,7 +73,7 @@ export const calculatorReducer = reducerWithInitialState(initialAppState)
         };
     })
     .case(calculatorActions.equal, (state, payload) => {
-        const value = state.resultValue;
+        const value = doCalc(state, state.operator);
         return {
             ...state,
             inputValue: 0,

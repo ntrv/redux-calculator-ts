@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
+import { bindActionCreators } from 'redux';
 
-import actionCreators from '../../actions/calculator';
+import { calculatorActions } from '../../actions/calculator';
 
 import NumButton from '../../components/calculator/NumButton';
 import PlusButton from '../../components/calculator/PlusButton';
@@ -64,7 +64,7 @@ const mapStateToProps = (state: any, ownProps: any) => ({
 });
 
 const mapDispatchToProps = (dispatch: any, props: any) => ({
-    actions: bindActionCreators(actionCreators, dispatch),
+    actions: bindActionCreators(calculatorActions, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalculatorContainer);
