@@ -1,6 +1,6 @@
+import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import {calculatorActions} from '../actions/calculator';
 import * as types from '../actions/calculator/types';
-import { reducerWithInitialState } from 'typescript-fsa-reducers';
 
 export interface CalculatorState {
     inputValue: number,

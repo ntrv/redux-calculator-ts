@@ -4,13 +4,13 @@ import { bindActionCreators } from 'redux';
 
 import { calculatorActions } from '../../actions/calculator';
 
-import NumButton from '../../components/calculator/NumButton';
-import PlusButton from '../../components/calculator/PlusButton';
-import MinusButton from '../../components/calculator/MinusButton';
-import MultipleButton from '../../components/calculator/MultipleButton';
-import EqualButton from '../../components/calculator/EqualButton';
 import ClearAllButton from '../../components/calculator/ClearAllButton';
 import Display from '../../components/calculator/Display';
+import EqualButton from '../../components/calculator/EqualButton';
+import MinusButton from '../../components/calculator/MinusButton';
+import MultipleButton from '../../components/calculator/MultipleButton';
+import NumButton from '../../components/calculator/NumButton';
+import PlusButton from '../../components/calculator/PlusButton';
 
 interface CalcProps {
     readonly display: number,
