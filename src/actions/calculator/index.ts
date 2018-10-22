@@ -1,13 +1,13 @@
 import * as types from './types';
-import { createActions } from 'redux-actions';
+import actionCreatorFactory from 'typescript-fsa';
 
-export default createActions(
-    {
-        [types.INPUT_NUMBER]: number => number,
-    },
-    types.PLUS,
-    types.MINUS,
-    types.MULTIPLE,
-    types.EQUAL,
-    types.CLEAR,
-)
+const actionCreator = actionCreatorFactory();
+
+export const calculatorActions = {
+    inputNumber: actionCreator<number>(types.INPUT_NUMBER),
+    plus: actionCreator<void>(types.PLUS),
+    minus: actionCreator<void>(types.MINUS),
+    multiple: actionCreator<void>(types.MULTIPLE),
+    equal: actionCreator<void>(types.EQUAL),
+    clear: actionCreator<void>(types.CLEAR),
+};
