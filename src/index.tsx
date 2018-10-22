@@ -1,10 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-import App from './App';
-import './index.css';
+import store from './store';
+
+import CalculatorContainer from './containers/calculator'
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <CalculatorContainer />
+  </Provider>,
   document.getElementById('root') as HTMLElement
 );
