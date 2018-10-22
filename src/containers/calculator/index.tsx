@@ -60,7 +60,7 @@ class CalculatorContainer extends React.Component<CalcProps, CalcState> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => ({
-    display: state.calculator.showValue,
+    display: state.calculatorReducer.showValue,
 });
 
 const mapDispatchToProps = (dispatch: any, props: any) => ({
