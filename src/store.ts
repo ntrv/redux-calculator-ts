@@ -1,7 +1,10 @@
 import { applyMiddleware, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
-import { persistReducer, persistStore, PersistConfig} from 'redux-persist';
+import { persistReducer, persistStore, PersistConfig } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
+// tslint:disable-next-line
+import immutableTransform from 'redux-persist-transform-immutable';
 
 import reducers from './reducers';
 
@@ -12,9 +15,11 @@ const logger = createLogger({
 });
 
 const persistConfig: PersistConfig = {
+    transforms: [immutableTransform()],
     key: 'root',
     storage,
-    whitelist: ['calculatorReducer'],
+//    whitelist: ['calculatorReducer'],
+    blacklist: ['calculatorReducer'],
 };
 
 const store = createStore(
@@ -22,5 +27,7 @@ const store = createStore(
     applyMiddleware(logger),
 );
 
-export const persistor = persistStore(store);
+export const persistor = persistStore(
+    store,
+);
 export default store;
