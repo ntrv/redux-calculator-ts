@@ -2,7 +2,9 @@ import { reducerWithInitialState } from 'typescript-fsa-reducers';
 
 import * as types from '../actions/calculator/types';
 import { calculatorActions } from '../actions/calculator';
-import { Calculator } from '../records/calculator';
+import { Calculator, CalculatorState } from '../records/calculator';
+
+export type CalculatorState = CalculatorState;
 
 export const calculatorReducer = reducerWithInitialState(new Calculator())
     .case(calculatorActions.inputNumber, (state: Calculator, payload: number): Calculator => {
