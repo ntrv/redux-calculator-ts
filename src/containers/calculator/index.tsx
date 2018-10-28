@@ -14,7 +14,7 @@ import PlusButton from '../../components/calculator/PlusButton';
 
 interface CalcProps {
     readonly display: number,
-    readonly actions: any
+    readonly actions: typeof calculatorActions,
 }
 
 interface CalcState {}
