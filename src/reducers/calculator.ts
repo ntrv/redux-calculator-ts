@@ -32,7 +32,7 @@ const doCalc = (state: CalculatorState, operator: string | null) => {
 }
 
 export const calculatorReducer = reducerWithInitialState(initialAppState)
-    .case(calculatorActions.inputNumber, (state, payload) => {
+    .case(calculatorActions.inputNumber, (state: CalculatorState, payload: number): CalculatorState => {
         const value = state.inputValue * 10 + payload;
         return {
             ...state,
@@ -40,7 +40,7 @@ export const calculatorReducer = reducerWithInitialState(initialAppState)
             showValue: value,
         };
     })
-    .case(calculatorActions.plus, (state, payload) => {
+    .case(calculatorActions.plus, (state: CalculatorState, payload: never): CalculatorState => {
         const value = state.resultValue + state.inputValue;
         return {
             ...state,
@@ -50,7 +50,7 @@ export const calculatorReducer = reducerWithInitialState(initialAppState)
             operator: types.PLUS,
         };
     })
-    .case(calculatorActions.minus, (state, payload) => {
+    .case(calculatorActions.minus, (state: CalculatorState, payload: never): CalculatorState => {
         const value = state.resultValue - state.inputValue;
         return {
             ...state,
@@ -60,7 +60,7 @@ export const calculatorReducer = reducerWithInitialState(initialAppState)
             operator: types.MINUS,
         };
     })
-    .case(calculatorActions.multiple, (state, payload) => {
+    .case(calculatorActions.multiple, (state: CalculatorState, payload: never): CalculatorState => {
         state.resultValue = state.operator ? state.resultValue : 1;
         state.inputValue = state.operator === types.EQUAL ? 1 : state.inputValue;
         const value = state.resultValue * state.inputValue;
@@ -72,7 +72,7 @@ export const calculatorReducer = reducerWithInitialState(initialAppState)
             operator: types.MULTIPLE,
         };
     })
-    .case(calculatorActions.equal, (state, payload) => {
+    .case(calculatorActions.equal, (state: CalculatorState, payload: never): CalculatorState => {
         const value = doCalc(state, state.operator);
         return {
             ...state,
@@ -82,4 +82,4 @@ export const calculatorReducer = reducerWithInitialState(initialAppState)
             operator: state.operator ? types.EQUAL : null,
         };
     })
-    .case(calculatorActions.clear, (state, payload) => initialAppState);
+    .case(calculatorActions.clear, (state: never, payload: never): CalculatorState => initialAppState);
