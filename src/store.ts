@@ -6,12 +6,13 @@ import storage from 'redux-persist/lib/storage';
 // tslint:disable-next-line
 import immutableTransform from 'redux-persist-transform-immutable';
 
-import reducers from './reducers';
+import reducers, { State } from './reducers';
 
 const logger = createLogger({
     level: 'log',
     diff: true,
     collapsed: true,
+    stateTransformer: (state: State) => state.calculatorReducer.toJS(),
 });
 
 const persistConfig: PersistConfig = {
