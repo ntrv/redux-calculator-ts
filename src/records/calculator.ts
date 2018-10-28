@@ -16,7 +16,7 @@ const initialState: CalculatorState = {
 };
 
 // tslint:disable-next-line
-const CalculatorRecord = Record<CalculatorState>(initialState, 'CalculatorRecord');
+const CalculatorRecord = Record(initialState, 'CalculatorRecord');
 
 export class Calculator extends CalculatorRecord {
     constructor(){
