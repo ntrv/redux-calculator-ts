@@ -1,85 +1,25 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
-import {calculatorActions} from '../actions/calculator';
+
 import * as types from '../actions/calculator/types';
+import { calculatorActions } from '../actions/calculator';
+import { Calculator } from '../records/calculator';
 
-export interface CalculatorState {
-    inputValue: number,
-    resultValue: number,
-    showValue: number,
-    operator: string | null,
-}
-
-const initialAppState: CalculatorState = {
-    inputValue: 0,
-    resultValue: 0,
-    showValue: 0,
-    operator: null,
-}
-
-const doCalc = (state: CalculatorState, operator: string | null) => {
-    switch(operator) {
-        case types.PLUS:
-            return state.resultValue + state.inputValue;
-        case types.MINUS:
-            return state.resultValue - state.inputValue;
-        case types.MULTIPLE:
-            return state.resultValue * state.inputValue;
-        case types.EQUAL:
-            return state.resultValue;
-        default:
-            return state.inputValue;
-    }
-}
-
-export const calculatorReducer = reducerWithInitialState(initialAppState)
-    .case(calculatorActions.inputNumber, (state: CalculatorState, payload: number): CalculatorState => {
-        const value = state.inputValue * 10 + payload;
-        return {
-            ...state,
-            inputValue: value,
-            showValue: value,
-        };
+export const calculatorReducer = reducerWithInitialState(new Calculator())
+    .case(calculatorActions.inputNumber, (state: Calculator, payload: number): Calculator => {
+        return state.inputNumber(payload);
     })
-    .case(calculatorActions.plus, (state: CalculatorState, payload: never): CalculatorState => {
-        const value = state.resultValue + state.inputValue;
-        return {
-            ...state,
-            inputValue: 0,
-            resultValue: value,
-            showValue: value,
-            operator: types.PLUS,
-        };
+    .case(calculatorActions.plus, (state: Calculator, payload: never): Calculator => {
+        return state.operation(types.PLUS);
     })
-    .case(calculatorActions.minus, (state: CalculatorState, payload: never): CalculatorState => {
-        const value = state.resultValue - state.inputValue;
-        return {
-            ...state,
-            inputValue: 0,
-            resultValue: value,
-            showValue: value,
-            operator: types.MINUS,
-        };
+    .case(calculatorActions.minus, (state: Calculator, payload: never): Calculator => {
+        return state.operation(types.MINUS);
     })
-    .case(calculatorActions.multiple, (state: CalculatorState, payload: never): CalculatorState => {
-        state.resultValue = state.operator ? state.resultValue : 1;
-        state.inputValue = state.operator === types.EQUAL ? 1 : state.inputValue;
-        const value = state.resultValue * state.inputValue;
-        return {
-            ...state,
-            inputValue: 0,
-            resultValue: value,
-            showValue: value,
-            operator: types.MULTIPLE,
-        };
+    .case(calculatorActions.multiple, (state: Calculator, payload: never): Calculator => {
+        return state.operation(types.MULTIPLE);
     })
-    .case(calculatorActions.equal, (state: CalculatorState, payload: never): CalculatorState => {
-        const value = doCalc(state, state.operator);
-        return {
-            ...state,
-            inputValue: 0,
-            resultValue: value,
-            showValue: value,
-            operator: state.operator ? types.EQUAL : null,
-        };
+    .case(calculatorActions.equal, (state: Calculator, payload: never): Calculator => {
+        return state.equal();
     })
-    .case(calculatorActions.clear, (state: never, payload: never): CalculatorState => initialAppState);
+    .case(calculatorActions.clear, (state: Calculator, payload: never): Calculator => {
+        return state.clearAll();
+    });
